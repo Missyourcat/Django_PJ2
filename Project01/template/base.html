@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            python
+        {% endblock %}
+    </title>
+</head>
+{#加载静态资源#}
+{% load static %}
+<body>
+<div id="head">
+    {#    <img src="http://127.0.0.1:8000/static/img.png">#}
+    <img src="{% static 'img.png' %}">
+</div>
+<div id="content">
+    {% block content %}
+        欢迎
+    {% endblock %}
+</div>
+<div id="footer">
+    版权所有:@#%^&*
+</div>
+
+</body>
+</html>

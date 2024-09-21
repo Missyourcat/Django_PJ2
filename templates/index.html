@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+字符串: {{ msg01 }}<br>
+字典类型: {{ msg02.cat }}<br>
+字典类型: {{ msg02['tom'] }}<br>
+字典类型: {{ msg02['tom1'] }}<br>
+对象: {{ msg03.name }},{{ msg03.age }}<br>
+列表: {{ msg04.0 }},{{ msg04.2 }},{{ msg04.1 }}<br>
+元组: {{ msg05.0 }},{{ msg05.1 }},{{ msg05.2 }},{{ msg05.3 }}<br>
+<h3>模板标签</h3>
+<p>遍历标签</p>
+{% for item in msg04 %}
+    <p>这个是第{{ loop.counter }}次遍历</p>
+    {% if loop.first %}
+        <p>这是第一项 {{ item }}</p>
+    {% elif loop.last %}
+        <p>这是最后一项 {{ item }}</p>
+    {% endif %}
+
+{% endfor %}
+<p>判断标签if</p>
+{% if msg01 == '模板变量' %}
+    <p>模板变量</p>
+{% elif msg02 == '模板变量02' %}
+    <p>模板变量02</p>
+{% else %}
+    <p>其他</p>
+{% endif %}
+<p>url标签</p>
+{#<a href="{% url 'index' %}" target="_blank">请求index地址</a>#}
+<a href="{{ url('index') }}" target="_blank">请求index地址</a>
+<p>with标签</p>
+{% with info=msg01 %}
+    {{ info }}
+{% endwith %}
+<p>Jinja3过滤器</p>
+first:{{ msg01 | first }}<br>
+last:{{ msg01 | last }}<br>
+length:{{ msg01 | length }}<br>
+upper:{{ msg06 | upper }}
+
+</body>
+</html>

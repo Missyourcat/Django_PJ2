@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+欢迎
+{% if request.user.is_authenticated %}
+    {{ request.user }}
+    <a href="/auth/logout">注销</a>
+    {% else %}
+    <a href="/tologin">登录</a>
+{% endif %}
+</body>
+</html>

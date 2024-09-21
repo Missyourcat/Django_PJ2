@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<h3>{{ title }}</h3>
+<a href="/book/preAdd">添加</a><br>
+<a href="/book/preAdd2">添加2(Form)</a><br>
+<a href="/book/preAdd3">添加2(ModelForm)</a><br>
+<table border="1">
+    <tr>
+        <th>编号</th>
+        <th>图书名称</th>
+        <th>图书价格</th>
+        <th>图书日期</th>
+        <th>图书类别</th>
+    </tr>
+    {% for book in bookList %}  
+        <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.bookName }}</td>
+            <td>{{ book.price }}</td>
+            <td>{{ book.publishDate | date:'Y-m-d' }}</td>
+            <td>{{ book.bookType.bookTypeName }}</td>
+            <td>
+                <a href="/book/preUpdate/{{ book.id }}">修改</a>
+                <a href="/book/delete/{{ book.id }}">删除</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+<form>
+    {% csrf_token %}
+</form>
+</body>
+</html>
